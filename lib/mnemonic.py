@@ -31,7 +31,7 @@ import unicodedata
 import string
 
 import ecdsa
-import pbkdf2
+import navdf2
 
 from util import print_error
 from navcoin import is_old_seed, is_new_seed
@@ -128,7 +128,7 @@ class Mnemonic(object):
     def mnemonic_to_seed(self, mnemonic, passphrase):
         NAVDF2_ROUNDS = 2048
         mnemonic = prepare_seed(mnemonic)
-        return pbkdf2.NAVDF2(mnemonic, 'electrum' + passphrase, iterations = NAVDF2_ROUNDS, macmodule = hmac, digestmodule = hashlib.sha512).read(64)
+        return navdf2.NAVDF2(mnemonic, 'electrum' + passphrase, iterations = NAVDF2_ROUNDS, macmodule = hmac, digestmodule = hashlib.sha512).read(64)
 
     def mnemonic_encode(self, i):
         n = len(self.wordlist)

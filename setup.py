@@ -38,7 +38,7 @@ setup(
     install_requires=[
         'slowaes>=0.1a1',
         'ecdsa>=0.9',
-        'pbkdf2',
+        'navdf2',
         'requests',
         'qrcode',
         'protobuf',
