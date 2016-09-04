@@ -16,7 +16,7 @@ if __name__ == '__main__':
     deps = [
         'aes',
         'ecdsa',
-        'navdf2',
+        'pbkdf2',
         'requests', # note: requests-2.5.1 is needed to build with pyinstaller
         'qrcode',
         'google/protobuf',

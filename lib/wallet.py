@@ -1757,12 +1757,12 @@ class BIP44_Wallet(BIP32_HD_Wallet):
     @staticmethod
     def mnemonic_to_seed(mnemonic, passphrase):
         # See BIP39
-        import navdf2, hashlib, hmac
-        NAVDF2_ROUNDS = 2048
+        import pbkdf2, hashlib, hmac
+        PBKDF2_ROUNDS = 2048
         mnemonic = normalize('NFKD', ' '.join(mnemonic.split()))
         passphrase = BIP44_Wallet.normalize_passphrase(passphrase)
-        return navdf2.NAVDF2(mnemonic, 'mnemonic' + passphrase,
-                             iterations = NAVDF2_ROUNDS, macmodule = hmac,
+        return pbkdf2.PBKDF2(mnemonic, 'mnemonic' + passphrase,
+                             iterations = PBKDF2_ROUNDS, macmodule = hmac,
                              digestmodule = hashlib.sha512).read(64)
 
     def derive_xkeys(self, root, derivation, password):
@@ -1928,7 +1928,7 @@ class Wallet(object):
                 # version 1.9.8 created v6 wallets when an incorrect seed was entered in the restore dialog
                 msg += '\n\nThis file was created because of a bug in version 1.9.8.'
                 if storage.get('master_public_keys') is None and storage.get('master_private_keys') is None and storage.get('imported_keys') is None:
-                    # navdf2 was not included with the binaries, and wallet creation aborted.
+                    # pbkdf2 was not included with the binaries, and wallet creation aborted.
                     msg += "\nIt does not contain any keys, and can safely be removed."
                 else:
                     # creation was complete if electrum was run from source
