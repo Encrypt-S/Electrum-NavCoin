@@ -1758,11 +1758,11 @@ class BIP44_Wallet(BIP32_HD_Wallet):
     def mnemonic_to_seed(mnemonic, passphrase):
         # See BIP39
         import pbkdf2, hashlib, hmac
-        PBKDF2_ROUNDS = 2048
+        NAVDF2_ROUNDS = 2048
         mnemonic = normalize('NFKD', ' '.join(mnemonic.split()))
         passphrase = BIP44_Wallet.normalize_passphrase(passphrase)
-        return pbkdf2.PBKDF2(mnemonic, 'mnemonic' + passphrase,
-                             iterations = PBKDF2_ROUNDS, macmodule = hmac,
+        return pbkdf2.NAVDF2(mnemonic, 'mnemonic' + passphrase,
+                             iterations = NAVDF2_ROUNDS, macmodule = hmac,
                              digestmodule = hashlib.sha512).read(64)
 
     def derive_xkeys(self, root, derivation, password):
