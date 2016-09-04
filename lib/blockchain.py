@@ -36,7 +36,7 @@ class Blockchain(util.PrintError):
     def __init__(self, config, network):
         self.config = config
         self.network = network
-        self.headers_url = "https://www.navcoin.org/encompass/nav/blockchain_headers"
+        self.headers_url = "http://95.183.53.12/electrum/blockchain_headers"
         self.local_height = 0
         self.set_local_height()
 
