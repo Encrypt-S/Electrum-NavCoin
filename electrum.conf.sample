@@ -6,7 +6,7 @@
 # that can be rewritten by the client
 
 [client]
-server = mobile.navcoin.org:5035:t
+server = mobile.navcoin.org:50001:t
 proxy = None
 gap_limit = 5
 # booleans use python syntax
