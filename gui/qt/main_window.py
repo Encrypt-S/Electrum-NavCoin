@@ -1872,6 +1872,9 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         sb.addPermanentWidget(self.status_button)
         run_hook('create_status_bar', sb)
         self.setStatusBar(sb)
+        
+    def update_logo_icon(self):
+        icon = QIcon(":icons/logo.png") if self.wallet.use_encryption else QIcon(":icons/logo.png")
 
     def update_lock_icon(self):
         icon = QIcon(":icons/lock.png") if self.wallet.use_encryption else QIcon(":icons/unlock.png")
@@ -2736,7 +2739,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         SSL_id_e.setReadOnly(True)
         id_widgets.append((SSL_id_label, SSL_id_e))
 
-        units = ['NAV', 'mNAV', 'NAVits']
+        units = ['mNAV', 'NAV', 'NAVits']
         msg = _('Base unit of your wallet.')\
               + '\n1NAV=1000mNAV.\n' \
               + _(' These settings affects the fields in the Send tab')+' '

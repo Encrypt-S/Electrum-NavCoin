@@ -12,9 +12,9 @@ NavCoin is a Proof-Of-Stake Coin, currently Electrum NavCoin is unable to spend 
 Prebuilt Windows Executables
 ===============
 
-    Portable Windows executable: https://www.navcoin.org/electrum-NAV3.6.0-portable.zip
+    Portable Windows executable: https://www.navcoin.org/downloads
 
-    Windows Installer: https://www.navcoin.org/electrum-NAV3.6.0-setup.zip
+    Windows Installer: https://www.navcoin.org/downloads
 
 
 
