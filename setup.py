@@ -46,7 +46,7 @@ setup(
         'jsonrpclib',
     ],
     packages=[
-        'electrum-navcoin',
+        'electrum',
         'electrum_gui',
         'electrum_gui.qt',
         'electrum_plugins',
