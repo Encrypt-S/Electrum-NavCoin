@@ -46,7 +46,7 @@ setup(
         'jsonrpclib',
     ],
     packages=[
-        'electrum',
+        'electrum-navcoin',
         'electrum_gui',
         'electrum_gui.qt',
         'electrum_plugins',
@@ -76,7 +76,7 @@ setup(
             'locale/*/LC_MESSAGES/electrum.mo',
         ]
     },
-    scripts=['electrum'],
+    scripts=['electrum-navcoin'],
     data_files=data_files,
     description="Lightweight NavCoin Wallet",
     author="Thomas Voegtlin",

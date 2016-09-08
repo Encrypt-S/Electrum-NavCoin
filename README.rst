@@ -31,7 +31,7 @@ If you downloaded the official package (tar.gz), then you can run
 Electrum from its root directory, without installing it on your
 system. To run Electrum from this directory, just do::
 
-    ./electrum
+    ./electrum-navcoin
 
 If you cloned the git repository, then you need to compile extra files
 before you can run Electrum. Read the next section, "Development
@@ -45,7 +45,7 @@ Development version
 Check out the code from Github::
 
     git clone git://github.com/navcoindev/electrum-navcoin.git
-    cd electrum
+    cd electrum-navcoin
 
 Compile the icons file for Qt::
 
