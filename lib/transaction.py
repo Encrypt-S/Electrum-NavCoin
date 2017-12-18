@@ -465,6 +465,9 @@ def deserialize(raw):
     n_vout = vds.read_compact_size()
     d['outputs'] = list(parse_output(vds,i) for i in xrange(n_vout))
     d['lockTime'] = vds.read_uint32()
+    length = vds.read_compact_size()
+    for i in range(length):
+        d['strdzeel'] += chr(vds.read_uint8())
     return d
 
 
@@ -545,14 +548,16 @@ class Transaction:
         self._inputs = d['inputs']
         self._outputs = [(x['type'], x['address'], x['value']) for x in d['outputs']]
         self.locktime = d['lockTime']
+        self.strdzeel = d['strdzeel']
         return d
 
     @classmethod
-    def from_io(klass, inputs, outputs, locktime=0, nTime=0):
+    def from_io(klass, inputs, outputs, locktime=0, nTime=0, strdzeel=""):
         self = klass(None)
         self._inputs = inputs
         self._outputs = outputs
         self.locktime = locktime
+        self.strdzeel = strdzeel
         if nTime == 0:
             self.time = int(time.time()) # bitspill
         else:
@@ -701,6 +706,9 @@ class Transaction:
             s += var_int( len(script)/2 )                           #  script length
             s += script                                             #  script
         s += int_to_hex(0,4)                                        #  lock time
+        s += var_int( len(self.strdzeel) )
+        for i in range( len(self.strdzeel) )
+            s += int_to_hex(ord(self.strdzeel[i]) ,1)
         if for_sig is not None and for_sig != -1:
             s += int_to_hex(1, 4)                                   #  hash type
         return s
