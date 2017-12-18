@@ -707,7 +707,7 @@ class Transaction:
             s += script                                             #  script
         s += int_to_hex(0,4)                                        #  lock time
         s += var_int( len(self.strdzeel) )
-        for i in range( len(self.strdzeel) )
+        for i in range( len(self.strdzeel) ):
             s += int_to_hex(ord(self.strdzeel[i]) ,1)
         if for_sig is not None and for_sig != -1:
             s += int_to_hex(1, 4)                                   #  hash type
