@@ -302,14 +302,14 @@ def PrivKeyToSecret(privkey):
     return privkey[9:9+32]
 
 
-def SecretToASecret(secret, compressed=False, addrtype=53):
-    vchIn = chr((addrtype+128)&255) + secret
+def SecretToASecret(secret, compressed=False, addrtype=150):
+    vchIn = chr(addrtype) + secret
     if compressed: vchIn += '\01'
     return EncodeBase58Check(vchIn)
 
-def ASecretToSecret(key, addrtype=53):
+def ASecretToSecret(key, addrtype=150):
     vch = DecodeBase58Check(key)
-    if vch and vch[0] == chr((addrtype+128)&255):
+    if vch and vch[0] == chr(addrtype):
         return vch[1:]
     elif is_minikey(key):
         return minikey_to_private_key(key)
@@ -364,7 +364,7 @@ def is_address(addr):
         addrtype, h = bc_address_to_hash_160(addr)
     except Exception:
         return False
-    if addrtype not in [53, 85]:
+    if addrtype not in [53, 85, 150]:
         return False
     return addr == hash_160_to_bc_address(h, addrtype)
 
